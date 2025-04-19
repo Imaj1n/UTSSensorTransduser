@@ -32,7 +32,7 @@ def detect_outlier(series, threshold=3):
     z_score = (series.iloc[-1] - mean) / std
     return abs(z_score) > threshold, mean, std
 
-st.title("\U0001F4C8 Monitor Suhu & Vibrasi Mesin - ThingSpeak")
+st.title("\U0001F4C8 Monitor Suhu & Vibrasi Mesin")
 st.markdown("Pantau kondisi mesin melalui suhu dan vibrasi secara real-time.")
 
 # Ambil data
