@@ -93,9 +93,24 @@ with col2:
 st.subheader("\U0001F4CA Visualisasi Distribusi dan Waktu")
 
 # Grafik suhu terhadap waktu
+# Plot suhu terhadap waktu
 fig_line = px.line(data, x="created_at", y="field1", title="Grafik Suhu terhadap Waktu", markers=True)
+
+# Tambahkan tanda silang (✖) ketika vibrasi == 1
+vibrasi_data = data[data["field2"] == 1]
+fig_line.add_trace(go.Scatter(
+    x=vibrasi_data["created_at"],
+    y=vibrasi_data["field1"],
+    mode="markers",
+    name="Getaran (✖)",
+    marker=dict(symbol="x", size=10, color="red"),
+    hoverinfo="text",
+    hovertext=["Getaran terdeteksi"] * len(vibrasi_data)
+))
+
 fig_line.update_layout(yaxis_title="Suhu (°C)", xaxis_title="Waktu")
 st.plotly_chart(fig_line, use_container_width=True)
+
 
 # Histogram distribusi tanpa Gaussian fit
 fig_hist = px.histogram(data, x="field1", nbins=20, marginal="rug", title="Distribusi Suhu")
