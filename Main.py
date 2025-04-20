@@ -37,7 +37,7 @@ latest_vibrasi = data["field2"].iloc[-1]
 
 # Statistik suhu
 mean_suhu = np.mean(data["field1"])
-std_suhu = np.std(data["field1"])
+# std_suhu = np.std(data["field1"])
 min_suhu = np.min(data["field1"])
 max_suhu = np.max(data["field1"])
 
@@ -59,7 +59,7 @@ with col1:
         delta_suhu = data["field1"].iloc[-1] - data["field1"].iloc[-2]
         delta_waktu = (data["created_at"].iloc[-1] - data["created_at"].iloc[-2]).total_seconds()
         rate_of_change = np.round(delta_suhu / delta_waktu if delta_waktu != 0 else 0, 3)
-        st.metric(label="🧮 Pengukuran Suhu", value=f"{mean_suhu:.2f} ± {std_suhu:.2f}°C", delta=f"{rate_of_change}°C/s")
+        st.metric(label="🧮 Pengukuran Suhu Terakhir kali", value=f"{mean_suhu:.2f}°C", delta=f"{rate_of_change}°C/s")
     else:
         st.warning("❗ Data kurang dari 2, tidak bisa hitung rate of change.")
     
