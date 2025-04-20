@@ -36,7 +36,7 @@ latest_suhu = data["field1"].iloc[-1]
 latest_vibrasi = data["field2"].iloc[-1]
 
 # Statistik suhu
-# mean_suhu = np.mean(data["field1"])
+mean_suhu = np.mean(data["field1"])
 # std_suhu = np.std(data["field1"])
 min_suhu = np.min(data["field1"])
 max_suhu = np.max(data["field1"])
